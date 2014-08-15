@@ -4,35 +4,36 @@
 @gray: #d1d1d1;
 @pink: lighten(@red, 15%);
 
-/* Mixin */
-.gradient (@origin: top, @start: #ffffff, @stop: #000000) {
-    background-color: @start;
-    background-image: -webkit-linear-gradient(@origin, @start, @stop);
-    background-image: -moz-linear-gradient(@origin, @start, @stop);
-    background-image: -o-linear-gradient(@origin, @start, @stop);
-    background-image: -ms-linear-gradient(@origin, @start, @stop);
-    background-image: linear-gradient(@origin, @start, @stop);
-}
-
+@media only screen{
 body{
-	background-image: url(img/texturetastic_gray_2X.png);
-	background-color: @gray;
-	font-family: 'Droid Sans', sans-serif;
+	// background-image: url(img/texturetastic_gray_2X.png);
+	background-color: @darkred;
+	font-family: "brandon-grotesque", sans-serif;
 }
 a {
 	font-weight: 700;
-	color: darken(@red, 25%)
+	color: lighten(@red, 25%);
+	&:hover{
+		color:@darkred;
+		text-decoration: none;
+	}
 }
+
 h1, h2,h3,h4,h5,h6, button{
-	font-family: 'Droid Sans', sans-serif;
+	font-family: 'brandon-grotesque', sans-serif;
 	font-weight: 400;
+	text-transform: uppercase;
+	color: white!important;
 }
+
 p{
-	font-family: 'Droid Sans', sans-serif;
+	font-family: "brandon-grotesque", sans-serif;
 	font-weight: 400;
+	color: white;
+	font-size: 13pt;
 }
 nav{
-	font-family: 'droid sans', sans-serif;
+	font-family: "brandon-grotesque", sans-serif;
 	opacity: 0.8;
 }
 .btn-danger{
@@ -43,28 +44,28 @@ nav{
 .btn-default{
 	text-shadow: none!important;
 	background-image: none;
+	color: @darkred!important;
 }
 .black{background-color: black;}
-
-.red{
-	.gradient(top, @red, @darkred);
-	h1, h2, h3, h4{color: white;}
+.jumbotron{
+	h1,h2{
+		font-weight: 700;
+		color: white!important;
+		text-shadow: -3px 3px 3px black!important;
+	}
 }
 .gray{
+	background-image: url(img/texturetastic_gray_2X.png);
+	h1, h2, h3, h4, h5{color: @darkred!important;}
 	background-color: @gray;
-	padding: 2.5%;
+	p{color: black;}
+	padding:2.5%;
+	margin-bottom: 2.5%;
+
 }
+
 .hdr{
 	padding-top: 5%;
-}
-.altred{
-	padding-top: 15px!important;
-	padding-bottom: 15px!important;
-	text-align:center;
-	h1, h2, h3,h4, h5{color: white;}
-	// h2{font-size: 48px;}
-	a{color: white;}
-	.gradient(top, @darkred, @red);
 }
 .pink{
 	background-color: @pink;
@@ -74,22 +75,22 @@ nav{
 	text-align: right;
 
 }
-
+.img-responsive{
+	padding-top: 2.5%;
+	padding-bottom: 2.5%;
+}
 .center{
 	text-align: center;
 }
-.row{
-	padding-bottom: 2.5%;
-	padding-top: 2.5%;
+.container{
+	padding-top:2.5%!important;
+	padding-bottom: 2.5%!important;
 }
+}
+
 @media only screen 
-and (min-width : 768px) {
-.faqrow{
-	display: -webkit-box;
-    display: -moz-box;
-    display: -ms-flexbox;
-    display: -webkit-flex;
-    display: flex;
-    flex:1 0 auto;
+and (max-width:450px){
+	.jumbotron{
+		text-align: center;
 }
 }

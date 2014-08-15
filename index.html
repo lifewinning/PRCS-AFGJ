@@ -2,24 +2,21 @@
 <html ng-app="myApp">
 <head>
 	<title>Friends of the Palestine Red Crescent Society</title>
+  <meta http-equiv="Content-Type" CONTENT="text/html; charset=utf-8">
 	<!-- fonts -->
 	<link href='http://fonts.googleapis.com/css?family=Droid+Sans:400,700' rel='stylesheet' type='text/css'>
+<script type="text/javascript" src="//use.typekit.net/cxh1pbr.js"></script> 
+<script type="text/javascript">try{Typekit.load();}catch(e){}</script>
 	<!-- Bootstrap -->
 	<!-- Latest compiled and minified CSS -->
-	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css">
-	<!-- Optional theme -->
-	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap-theme.min.css">
-	<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-	<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-	<!--[if lt IE 9]>
-	  <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-	  <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
-	<![endif]-->
-  <!-- jQuery -->
-  <script src="https://code.jquery.com/jquery.js"></script>
-	<!-- Latest compiled and minified JavaScript -->
-  <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
-  
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>  
+<!-- Latest compiled and minified JavaScript -->
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+
   <!-- Custom styles -->
     <link rel="stylesheet" type="text/less" href="src/style.less">
    	<script src="src/less.js"></script>
@@ -30,6 +27,8 @@
 	<script src="http://code.angularjs.org/1.2.6/angular-sanitize.js"></script>
 	<script src="http://code.angularjs.org/1.2.6/angular-resource.js"></script>
 	<script src="http://code.angularjs.org/1.2.6/angular-route.min.js"></script>
+    <script src="src/angular-ui-router.min.js"></script>
+  <script src="src/ui-utils.min.js"></script>
 	<!-- tabletop -->
 	<script src="src/tabletop.js"></script>
 	<!-- app and parts -->
@@ -39,6 +38,7 @@
 </head>
 <div ng-controller="spreadsheet">
   <!-- nav -->
+  <div ng-controller="lang">
   <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container-fluid">
     <!-- Brand and toggle get grouped for better mobile display -->
@@ -50,10 +50,17 @@
         <span class="icon-bar"></span>
       </button>
     </div>
-
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Language<span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+              <span ng-repeat="item in langList">
+                <li><a href="{{item.abbreviation}}">{{item.language}}</a></li>
+              </span>
+          </ul>
+        </li>
         <li><a href="#Why">Why</a></li>
         <li><a href="#About">About</a></li>
         <li><a href="#faq">FAQ</a></li>
@@ -63,39 +70,68 @@
       </ul>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
+  </div><!--/.ng-controller-->
 </nav>
 <header>
-<div class="jumbotron red">
-    <div class="container">
-    <div class="col-md-12 hdr"><img src="src/img/prcslogos.png" style="max-height:45%; float:left;" alt="Friends of the Palestinian Red Crescent">
-    <h1>Friends of the<br>Palestine Red Crescent Society</h1><h4>Supporting Medical Relief for the People of Gaza </h4><a href="https://org2.salsalabs.com/o/7315/donate_page/friends-prcs"><button type="button" class="btn btn-default btn-lg center">Donate Now</button></a></div>
-  </div>    
-</div>
+<div class="jumbotron" style=" min-height:100%!important; background-image: url(src/img/photos/IMG_4024.JPG);background-repeat:no-repeat;background-position: center center;">
+    <img src="src/img/prcslogos.png" style="max-height:45%; float:left;" alt="Friends of the Palestinian Red Crescent">
+    <h1>Friends of the<br>Palestine Red Crescent Society</h1><h2>Supporting Medical Relief for the People of Gaza</h2><a href="https://org2.salsalabs.com/o/7315/donate_page/friends-prcs"><button type="button" class="btn btn-default btn-lg center">Donate Now</button></a></div>
 </header>
-  <!-- about, etc -->
-    	<div ng-repeat="item in tableDataTabletop | filter: {sectiontype:'aboveFAQ'}">
-    		<div class="jumbotron altred" id="{{item.sectionname}}">
-        		<div class="container">
-        			<h2>{{item.sectionname}}</h2>
-        		</div>
-        	</div> 
-        <div class="container">
-        	<div class="row">
-        		<div class="col-md-12">
+  <!-- why -->
+    	<div ng-repeat="item in tableDataTabletop | filter: {sectionname:'why'}">
+    		<div class="row" id="{{item.sectionname}}">
+          <div class="container">
+            <div class="col-md-6">
+            <div class="gray">
+              <h1>{{item.sectionname}}</h1>
         			<p><span ng-bind-html="item.copy"></span></p>
+            </div>
         		</div>
+            <div class="col-md-6">
+              <img src="src/img/photos/20-IMG_4158.JPG" class="img-responsive">
+            </div>
         	</div>
+        </div>
     	</div>
-    </div>		
-    <!-- faq -->
-    <div class="jumbotron altred" id="faq">
-    	<div class="container"><h2>Frequently Asked Questions</h2></div>
+  <!-- about -->
+      <div ng-repeat="item in tableDataTabletop | filter: {sectionname:'about'}">
+      <div style=" min-height:100%!important; background-image: url(src/img/photos/12-IMG_4101.JPG);background-repeat:no-repeat;background-position: center center;">
+        <div class="row" id="{{item.sectionname}}">
+          <div class="container">
+            <div class="col-md-6 col-md-offset-6">
+            <div class="gray">
+              <h1>{{item.sectionname}}</h1>
+              <p><span ng-bind-html="item.copy"></span></p>
+            </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
-    <div class="container">
-    		<div ng-repeat="item in tableDataTabletop | filter: {sectiontype:'theFAQ'}">
+    <!-- endorsement -->
+     <div ng-repeat="item in tableDataTabletop | filter: {sectionname:'Endorsement'}">
+        <div class="row" id="{{item.sectionname}}">
+          <div class="container">
+           <div class="col-md-6">
+              <img src="src/img/photos/IMG_4245.JPG" class="img-responsive">
+            </div> 
+            <div class="col-md-6">
+            <div class="gray">
+              <h1>{{item.sectionname}}</h1>
+              <p><span ng-bind-html="item.copy"></span></p>
+            </div>
+            </div>
+          </div>
+        </div>
+      </div>  
+    <!-- faq -->
+    <div class="container" id="faq">
+    		<h1 style="text-align:center;">Frequently Asked Questions</h1>
+        <div ng-repeat="item in tableDataTabletop | filter: {sectiontype:'theFAQ'}"> 
    			<div class="row faqrow">
-   				<div class="pink col-md-6">
-    				<h2>{{item.sectionname}}</h2>
+   				<div class="col-md-6">
+            <div class="pink"><h3>{{item.sectionname}}</h3></div>
+    				
     			</div>
    				<div class="gray col-md-6">
    					<p><span ng-bind-html="item.copy"></span></p>
@@ -109,20 +145,12 @@
 				<h2>Legal</h2>
 		</div>
    </div> -->
-   	<div ng-repeat="item in tableDataTabletop | filter: {sectiontype: 'legal'}">
-   		<div class="container">
-        		<div class="row">
-        			<div class="col-md-12">
-        				<p><span ng-bind-html="item.copy"></span></p>
-        			</div>
-        		</div>
-      		</div>
-   	</div>
+
     <!-- social media -->
     <footer>
-    	<div class="jumbotron altred">
+    	<div class="jumbotron gray">
         		<div class="container">
-       				<h5>Connect | <a href=mailto:friendsprcs@afgj.org><i class="fa fa-envelope-o"></i> friendsprcs@afgj.org</a>| <span ng-repeat="item in tableDataTabletop | filter: {sectiontype: 'connect'}"><a href="http://{{item.sectionname}}.com/{{item.copy}}"><i class="fa fa-{{item.sectionname}}"></i> {{item.copy}}</a> | </span> <a href="http://afgj.org">afgj.org</a></h5>
+       				<h5 style="text-align:center;">Connect | <a href=mailto:friendsprcs@afgj.org><i class="fa fa-envelope-o"></i> friendsprcs@afgj.org</a>| <span ng-repeat="item in tableDataTabletop | filter: {sectiontype: 'connect'}"><a href="http://{{item.sectionname}}.com/{{item.copy}}"><i class="fa fa-{{item.sectionname}}"></i> {{item.copy}}</a> | </span> <a href="http://afgj.org">afgj.org</a></h5>
         		</div>
     	</div>
     	</footer>

@@ -7,7 +7,7 @@ angular.module('myApp.services', ['ngResource']).
 
     factory.getSpreadsheetTabletop = function (callback) {
     Tabletop.init({
-        key: '0AkuokbMVYNRxdHE2anZsV0JrSmQ5QjBSRkszNnBRRFE',
+        key: '0AkuokbMVYNRxdDY0OTJzTmdocTJJcXhZd21CaXZnbWc',
         callback: function(data, tabletop) {
           if(callback && typeof(callback) === "function") {
             $rootScope.$apply(function() {
@@ -15,7 +15,7 @@ angular.module('myApp.services', ['ngResource']).
             })
           }
         },
-        simpleSheet: false,
+        simpleSheet: true,
         parseNumbers: true
       })
     }
