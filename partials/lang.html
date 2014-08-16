@@ -1,0 +1,90 @@
+<header>
+<div class="jumbotron" style=" min-height:100%!important; background-image: url(src/img/photos/IMG_4024.JPG);background-repeat:no-repeat;background-position: center center;">
+<div class="container">
+  <div class="col-md-4">
+    <img src="src/img/prcslogos.png" class="img-responsive" alt="Friends of the Palestinian Red Crescent">
+    </div>
+  <div class="col-md-8">
+ <h1><span ng-repeat="item in tableDataTabletop | filter: {sectiontype:'title'}">{{item.copy}}</h1></span>
+    <span ng-repeat="item in tableDataTabletop | filter: {sectiontype:'caption'}"><h2>{{item.copy}}</h2></span><a href="https://org2.salsalabs.com/o/7315/donate_page/friends-prcs"><button type="button" class="btn btn-default btn-lg center"><span ng-repeat="item in tableDataTabletop | filter: {sectiontype:'donate'}">{{item.copy}}</span></button></a>
+    </div>
+    </div>
+</div>
+</header>
+  <!-- why -->
+    	<div ng-repeat="item in tableDataTabletop | filter: {sectiontype:'why'}">
+    		<div class="row" id="{{item.sectiontype}}">
+          <div class="container">
+            <div class="col-md-6">
+            <div class="gray">
+              <h1>{{item.sectionname}}</h1>
+        			<p><span ng-bind-html="item.copy"></span></p>
+            </div>
+        		</div>
+            <div class="col-md-6">
+              <img src="src/img/photos/20-IMG_4158.JPG" class="img-responsive paddedimg">
+            </div>
+        	</div>
+        </div>
+    	</div>
+  <!-- about -->
+      <div ng-repeat="item in tableDataTabletop | filter: {sectiontype:'about'}">
+      <div style=" min-height:100%!important; background-image: url(src/img/photos/12-IMG_4101.JPG);background-repeat:no-repeat;background-position: center center;">
+        <div class="row" id="{{item.sectiontype}}">
+          <div class="container">
+            <div class="col-md-6 col-md-offset-6">
+            <div class="gray">
+              <h1>{{item.sectionname}}</h1>
+              <p><span ng-bind-html="item.copy"></span></p>
+            </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- endorsement -->
+     <div ng-repeat="item in tableDataTabletop | filter: {sectiontype:'Endorsement'}">
+        <div class="row" id="{{item.sectiontype}}">
+          <div class="container">
+           <div class="col-md-6">
+              <img src="src/img/photos/IMG_4245.JPG" class="img-responsive paddedimg">
+            </div> 
+            <div class="col-md-6">
+            <div class="gray">
+              <h1>{{item.sectionname}}</h1>
+              <p><span ng-bind-html="item.copy"></span></p>
+            </div>
+            </div>
+          </div>
+        </div>
+      </div>  
+    <!-- faq -->
+    <div class="container" id="faq">
+    		<h1 style="text-align:center;" ng-bind="faq"></h1>
+        <div ng-repeat="item in tableDataTabletop | filter: {sectiontype:'theFAQ'}"> 
+   			<div class="row faqrow">
+   				<div class="col-md-6">
+            <div class="pink"><h3>{{item.sectionname}}</h3></div>
+    				
+    			</div>
+   				<div class="gray col-md-6">
+   					<p><span ng-bind-html="item.copy"></span></p>
+    			</div>
+  			</div>
+    	</div>
+    </div>
+    <!-- legal -->
+<!--    <div class="jumbotron altred" id="legal">
+		<div class="container">
+				<h2>Legal</h2>
+		</div>
+   </div> -->
+
+    <!-- social media -->
+    <footer>
+    	<div class="jumbotron gray">
+        		<div class="container">
+       				<h5 style="text-align:center;"><a href=mailto:friendsprcs@afgj.org><i class="fa fa-envelope-o"></i> friendsprcs@afgj.org</a>| <span ng-repeat="item in tableDataTabletop | filter: {sectiontype: 'connect'}"><a href="http://{{item.sectionname}}.com/{{item.copy}}"><i class="fa fa-{{item.sectionname}}"></i> {{item.copy}}</a> | </span> <a href="http://afgj.org">afgj.org</a></h5>
+        		</div>
+    	</div>
+    	</footer>
