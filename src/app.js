@@ -15,7 +15,7 @@ app.config(function($stateProvider, $urlRouterProvider){
     			EN.getSpreadsheetEN(function(data) {
         			$scope.tableDataTabletop = data;
        				$scope.hdr = "Friends of the Palestine Red Crescent Society";
-              $scope.faq = "Frequently Aske Questions"
+              $scope.faq = "Frequently Asked Questions"
     			     });
           }]
         })
