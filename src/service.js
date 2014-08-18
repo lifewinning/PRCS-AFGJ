@@ -273,6 +273,67 @@ angular.module('myApp.services', ['ngResource']).
       })
     }
     return factory;
+  }). 
+  // adding Chinese and Hindi in a rush, not proxying
+  factory('ZH', function($resource, $rootScope, $http) {
+
+    var factory = {};
+
+    factory.getSpreadsheetZH = function (callback) {
+    Tabletop.init({
+        key: '0AkuokbMVYNRxdFZOOW9peWpwSDFOenoyRVVnRGZPS1E',
+        callback: function(data, tabletop) {
+          if(callback && typeof(callback) === "function") {
+            $rootScope.$apply(function() {
+              callback(data);
+            })
+          }
+        },
+        simpleSheet: true,
+        parseNumbers: true
+      })
+    }
+    return factory;
+  }).
+  factory('ZH', function($resource, $rootScope, $http) {
+
+    var factory = {};
+
+    factory.getSpreadsheetZH = function (callback) {
+    Tabletop.init({
+        key: '0AkuokbMVYNRxdFZOOW9peWpwSDFOenoyRVVnRGZPS1E',
+        callback: function(data, tabletop) {
+          if(callback && typeof(callback) === "function") {
+            $rootScope.$apply(function() {
+              callback(data);
+            })
+          }
+        },
+        simpleSheet: true,
+        parseNumbers: true
+      })
+    }
+    return factory;
+  }).
+factory('HI', function($resource, $rootScope, $http) {
+
+    var factory = {};
+
+    factory.getSpreadsheetHI = function (callback) {
+    Tabletop.init({
+        key: '0AkuokbMVYNRxdHY5OGs1Y1lmNTBwRXpfLXhMWW15OVE',
+        callback: function(data, tabletop) {
+          if(callback && typeof(callback) === "function") {
+            $rootScope.$apply(function() {
+              callback(data);
+            })
+          }
+        },
+        simpleSheet: true,
+        parseNumbers: true
+      })
+    }
+    return factory;
   }).
   factory('lang', function($resource, $rootScope, $http) {
 

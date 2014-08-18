@@ -135,11 +135,33 @@ app.config(function($stateProvider, $urlRouterProvider){
             controller:  ['$scope', 'UA', function($scope, UA) {
           UA.getSpreadsheetUA(function(data) {
               $scope.tableDataTabletop = data;
-              $scope.hdr = "Друзі Спілки Палестинського Червоного місяця.";
+              $scope.hdr = "Друзі Спілки Палестинського Червоного місяця";
               $scope.faq = "Запитання"
                          });
           }]
-        })                              
+        })
+        .state('zh', {
+            url: "/zh",
+            templateUrl: 'partials/lang-uni.html', 
+            controller:  ['$scope', 'ZH', function($scope, ZH) {
+          ZH.getSpreadsheetZH(function(data) {
+              $scope.tableDataTabletop = data;
+              $scope.hdr = "巴勒斯坦红新月会之友";
+              $scope.faq = "问题"
+                         });
+          }]
+        })
+        .state('hi', {
+            url: "/hi",
+            templateUrl: 'partials/lang-uni.html', 
+            controller:  ['$scope', 'HI', function($scope, HI) {
+          HI.getSpreadsheetHI(function(data) {
+              $scope.tableDataTabletop = data;
+              $scope.hdr = "फ्रेंड्स ऑफ़ ढ पलेस्टाइन रेड क्रिसेंट सोसाइटी ";
+              $scope.faq = "प्रश्न"
+                         });
+          }]
+        })                                     
 });
 app.run(
       [ '$rootScope', '$state', '$stateParams',
