@@ -1,7 +1,9 @@
-<title ng-bind="hdr"></title>
-<header>
+<!-- title localized  -->
+<!-- <title ng-bind="hdr"></title> -->
+<!-- rest of nav localized -->
+
 <div class="jumbotron" style=" min-height:100%!important; background-image: url(src/img/photos/IMG_4024.JPG);background-repeat:no-repeat;background-position: center center;">
-<div class="container">
+<div class="container-fluid">
   <div class="col-md-4">
     <img src="src/img/prcslogos.png" class="img-responsive" alt="Friends of the Palestinian Red Crescent">
     </div>
@@ -11,10 +13,11 @@
     </div>
 </div>
 </header>
+
   <!-- why -->
     	<div ng-repeat="item in tableDataTabletop | filter: {sectionname:'why'}">
-    		<div class="row" id="{{item.sectionname}}">
-          <div class="container">
+    	<div class="container-fluid">
+        <div class="row-fluid" id="{{item.sectionname}}">
             <div class="col-md-6">
             <div class="gray">
               <h1>{{item.sectionname}}</h1>
@@ -30,8 +33,8 @@
   <!-- about -->
       <div ng-repeat="item in tableDataTabletop | filter: {sectionname:'about'}">
       <div style=" min-height:100%!important; background-image: url(src/img/photos/12-IMG_4101.JPG);background-repeat:no-repeat;background-position: center center;">
-        <div class="row" id="{{item.sectionname}}">
-          <div class="container">
+    <div class="container-fluid">
+        <div class="row-fluid" id="{{item.sectionname}}">
             <div class="col-md-6 col-md-offset-6">
             <div class="gray">
               <h1>{{item.sectionname}}</h1>
@@ -44,8 +47,8 @@
     </div>
     <!-- endorsement -->
      <div ng-repeat="item in tableDataTabletop | filter: {sectionname:'Endorsement'}">
-        <div class="row" id="{{item.sectionname}}">
-          <div class="container">
+<div class="container-fluid">
+        <div class="row-fluid" id="{{item.sectionname}}">
            <div class="col-md-6">
               <img src="src/img/photos/IMG_4245.JPG" class="img-responsive paddedimg">
             </div> 
@@ -59,10 +62,10 @@
         </div>
       </div>  
     <!-- faq -->
-    <div class="container" id="faq">
+    <div class="container-fluid" id="faq">
     		<h1 style="text-align:center;" ng-bind="faq"></h1>
         <div ng-repeat="item in tableDataTabletop | filter: {sectiontype:'theFAQ'}"> 
-   			<div class="row faqrow">
+   			<div class="row-fluid faqrow">
    				<div class="col-md-6">
             <div class="pink"><h3>{{item.sectionname}}</h3></div>
     				
@@ -75,7 +78,7 @@
     </div>
     <!-- legal -->
 <!--    <div class="jumbotron altred" id="legal">
-		<div class="container">
+		<div class="container-fluid">
 				<h2>Legal</h2>
 		</div>
    </div> -->
@@ -83,7 +86,7 @@
     <!-- social media -->
     <footer>
     	<div class="jumbotron gray">
-        		<div class="container">
+        		<div class="container-fluid">
        				<h5 style="text-align:center;">Connect | <a href=mailto:friendsprcs@afgj.org><i class="fa fa-envelope-o"></i> friendsprcs@afgj.org</a>| <span ng-repeat="item in tableDataTabletop | filter: {sectiontype: 'connect'}"><a href="http://{{item.sectionname}}.com/{{item.copy}}"><i class="fa fa-{{item.sectionname}}"></i> {{item.copy}}</a> | </span> <a href="http://afgj.org">afgj.org</a></h5>
         		</div>
     	</div>

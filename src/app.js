@@ -1,5 +1,3 @@
-'use strict';
-
 var app=angular.module('myApp', ['ngSanitize', 'myApp.controllers',  'myApp.services', 'ui.router', 'ui.utils']);
 
 app.config(function($stateProvider, $urlRouterProvider){
